@@ -9,7 +9,7 @@ type GlassCardProps = HTMLMotionProps<"div"> & {
 export function GlassCard({ className, interactive = false, ...props }: GlassCardProps) {
   return (
     <motion.div
-      whileHover={interactive ? { scale: 1.02, y: -4 } : undefined}
+      {...(interactive ? { whileHover: { scale: 1.02, y: -4 } } : {})}
       transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
       className={cn(
         "glass-surface rounded-3xl p-6",
