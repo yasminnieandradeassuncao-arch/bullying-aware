@@ -104,7 +104,7 @@ function Imersao() {
   return (
     <>
       <AnimatedBackground />
-      <main className="relative flex min-h-dvh flex-col items-center justify-center px-4 py-20 sm:px-6">
+      <main className="relative flex h-dvh flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-6">
         <p className="sr-only" aria-live="polite">
           Etapa {step + 1} de 4
         </p>
@@ -119,11 +119,11 @@ function Imersao() {
               transition={{ duration: 0.8, ease }}
               className="mx-auto max-w-2xl text-center"
             >
-              <h1 className="text-4xl font-semibold text-gradient sm:text-6xl">Olá!</h1>
-              <p className="mx-auto mt-6 max-w-xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-2xl">
+              <h1 className="text-2xl font-semibold text-gradient sm:text-4xl">Olá!</h1>
+              <p className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-muted-foreground sm:text-xl">
                 Seja bem-vindo à Imersão Bullying – Realidade não Editada
               </p>
-              <GlassButton size="lg" className="mt-12" onClick={next}>
+              <GlassButton size="lg" className="mt-8" onClick={next}>
                 Começar
               </GlassButton>
             </motion.section>
@@ -138,10 +138,10 @@ function Imersao() {
               transition={{ duration: 0.7, ease }}
               className="mx-auto w-full max-w-3xl text-center"
             >
-              <h1 className="text-3xl font-semibold text-gradient sm:text-5xl">
+              <h1 className="text-2xl font-semibold text-gradient sm:text-4xl">
                 Aqui vamos aprender:
               </h1>
-              <ul className="mt-10 grid gap-3 text-left sm:grid-cols-2">
+              <ul className="mt-6 grid grid-cols-2 gap-2 text-left sm:gap-3">
                 {topics.map((topic, i) => (
                   <motion.li
                     key={topic.label}
@@ -149,16 +149,16 @@ function Imersao() {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 0.5, delay: 0.12 * i, ease }}
                   >
-                    <GlassCard className="flex items-center gap-3 rounded-2xl p-4">
+                    <GlassCard className="flex items-center gap-2 rounded-2xl p-3 sm:gap-3 sm:p-4">
                       <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
                         <topic.Icon aria-hidden="true" className="size-4" />
                       </span>
-                      <span className="min-w-0 text-sm sm:text-base">{topic.label}</span>
+                      <span className="min-w-0 text-xs sm:text-base">{topic.label}</span>
                     </GlassCard>
                   </motion.li>
                 ))}
               </ul>
-              <GlassButton size="lg" className="mt-10" onClick={next}>
+              <GlassButton size="lg" className="mt-6" onClick={next}>
                 Continuar
               </GlassButton>
             </motion.section>
@@ -176,12 +176,12 @@ function Imersao() {
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
                 Questão Teste
               </p>
-              <h1 className="mt-3 text-2xl font-semibold text-balance sm:text-4xl">
+              <h1 className="mt-2 text-xl font-semibold text-balance sm:text-3xl">
                 Se algum colega de classe zomba de você por questões relacionadas à raça, etnia ou
                 religião, você:
               </h1>
 
-              <fieldset className="mt-8 space-y-3">
+              <fieldset className="mt-5 space-y-2">
                 <legend className="sr-only">Escolha uma alternativa</legend>
                 {options.map((option, i) => {
                   const active = selected?.id === option.id;
@@ -196,7 +196,7 @@ function Imersao() {
                       transition={{ duration: 0.5, delay: 0.08 * i, ease }}
                       whileHover={{ scale: 1.01 }}
                       className={cn(
-                        "glass-surface flex w-full items-center gap-4 rounded-2xl px-5 py-4 text-left transition-colors duration-300",
+                        "glass-surface flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm transition-colors duration-300 sm:px-5",
                         active && option.good && "border-success/50 bg-success/10",
                         active && !option.good && "border-destructive/50 bg-destructive/10",
                       )}
@@ -234,7 +234,7 @@ function Imersao() {
                     exit={{ opacity: 0, y: -8, filter: "blur(8px)" }}
                     transition={{ duration: 0.45, ease }}
                     aria-live="polite"
-                    className="mt-6"
+                    className="mt-4"
                   >
                     <GlassCard
                       className={cn(
@@ -258,7 +258,7 @@ function Imersao() {
                 ) : null}
               </AnimatePresence>
 
-              <GlassButton size="lg" className="mt-8" disabled={!selected} onClick={next}>
+              <GlassButton size="lg" className="mt-5" disabled={!selected} onClick={next}>
                 Continuar
               </GlassButton>
             </motion.section>
@@ -271,15 +271,15 @@ function Imersao() {
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               exit={{ opacity: 0, filter: "blur(14px)", y: -20 }}
               transition={{ duration: 0.7, ease }}
-              className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-2"
+              className="mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-2"
             >
-              <GlassCard className="p-8 sm:p-10">
+              <GlassCard className="p-6 sm:p-9">
                 <h1 className="text-3xl font-semibold sm:text-4xl">Entrar</h1>
                 <p className="mt-3 text-sm text-muted-foreground">
                   Acesso simbólico — nenhum dado é enviado ou armazenado.
                 </p>
                 <form
-                  className="mt-8 space-y-5"
+                  className="mt-6 space-y-4"
                   onSubmit={(e) => {
                     e.preventDefault();
                     void navigate({ to: "/home" });
@@ -293,7 +293,7 @@ function Imersao() {
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Seu nome"
                       autoComplete="name"
-                      className="h-12 rounded-2xl border-white/15 bg-white/5"
+                      className="h-11 rounded-2xl border-white/15 bg-white/5"
                     />
                   </div>
                   <div className="space-y-2">
@@ -303,7 +303,7 @@ function Imersao() {
                       value={group}
                       onChange={(e) => setGroup(e.target.value)}
                       placeholder="Ex.: 9º ano B"
-                      className="h-12 rounded-2xl border-white/15 bg-white/5"
+                      className="h-11 rounded-2xl border-white/15 bg-white/5"
                     />
                   </div>
                   <GlassButton type="submit" size="lg" className="w-full">
@@ -312,7 +312,7 @@ function Imersao() {
                 </form>
               </GlassCard>
 
-              <ul className="grid gap-4 sm:grid-cols-2">
+              <ul className="hidden gap-4 lg:grid lg:grid-cols-2">
                 {[
                   { label: "Tipos de Bullying", Icon: Users },
                   { label: "Como Identificar", Icon: Eye },
@@ -340,7 +340,7 @@ function Imersao() {
           ) : null}
         </AnimatePresence>
 
-        <div className="mt-14 flex items-center gap-2" aria-hidden="true">
+        <div className="mt-6 flex shrink-0 items-center gap-2" aria-hidden="true">
           {[0, 1, 2, 3].map((i) => (
             <span
               key={i}
