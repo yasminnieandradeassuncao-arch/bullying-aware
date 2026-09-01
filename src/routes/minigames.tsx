@@ -3,7 +3,6 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Check, Gamepad2, ListChecks, PenLine, Scale, ToggleLeft, Trophy, X } from "lucide-react";
 import { AnimatedBackground } from "@/components/animated-background";
-import { Footer } from "@/components/footer";
 import { GlassButton } from "@/components/glass-button";
 import { GlassCard } from "@/components/glass-card";
 import { Navbar } from "@/components/navbar";
@@ -47,7 +46,7 @@ function Minigames() {
     <>
       <AnimatedBackground />
       <Navbar />
-      <main className="px-4 pb-24 pt-32 sm:px-6">
+      <main className="flex h-dvh flex-col justify-center overflow-hidden px-4 pb-6 pt-24 sm:px-6">
         <PageTransition>
           <SectionTitle
             eyebrow="Minigames"
@@ -63,7 +62,7 @@ function Minigames() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -16, filter: "blur(10px)" }}
                 transition={{ duration: 0.6, ease }}
-                className="mx-auto mt-14 max-w-3xl"
+                className="mx-auto mt-6 w-full max-w-3xl"
               >
                 <GameBoard game={active} onExit={() => setActive(null)} />
               </motion.div>
@@ -74,7 +73,7 @@ function Minigames() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, filter: "blur(10px)" }}
                 transition={{ duration: 0.5, ease }}
-                className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2"
+                className="mx-auto mt-6 grid w-full max-w-5xl gap-4 sm:grid-cols-2"
               >
                 {games.map((game, i) => {
                   const Icon = icons[game.id];
@@ -85,15 +84,15 @@ function Minigames() {
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ duration: 0.55, delay: i * 0.09, ease }}
                     >
-                      <GlassCard interactive className="flex h-full flex-col p-6">
+                      <GlassCard interactive className="flex h-full flex-col p-5">
                         <span className="grid size-11 place-items-center rounded-2xl bg-primary/15 text-primary">
                           <Icon aria-hidden="true" className="size-5" />
                         </span>
-                        <h3 className="mt-5 text-xl font-semibold">{game.title}</h3>
+                        <h3 className="mt-4 text-lg font-semibold sm:text-xl">{game.title}</h3>
                         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                           {game.description}
                         </p>
-                        <GlassButton className="mt-6 self-start" onClick={() => setActive(game)}>
+                        <GlassButton className="mt-5 self-start" onClick={() => setActive(game)}>
                           <Gamepad2 aria-hidden="true" />
                           Jogar
                         </GlassButton>
@@ -106,7 +105,6 @@ function Minigames() {
           </AnimatePresence>
         </PageTransition>
       </main>
-      <Footer />
     </>
   );
 }
@@ -143,7 +141,7 @@ function GameBoard({ game, onExit }: { game: Game; onExit: () => void }) {
   };
 
   return (
-    <GlassCard className="p-6 sm:p-9">
+    <GlassCard className="p-5 sm:p-7">
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
         <div className="min-w-0">
           <h2 className="truncate text-xl font-semibold">{game.title}</h2>
@@ -194,9 +192,9 @@ function GameBoard({ game, onExit }: { game: Game; onExit: () => void }) {
         </motion.div>
       ) : (
         <>
-          <p className="mt-8 text-lg font-medium text-balance sm:text-2xl">{question.prompt}</p>
+          <p className="mt-6 text-base font-medium text-balance sm:text-xl">{question.prompt}</p>
 
-          <fieldset className="mt-6 space-y-3">
+          <fieldset className="mt-4 space-y-2">
             <legend className="sr-only">Alternativas</legend>
             {question.options.map((option, i) => {
               const isChosen = chosen === i;
@@ -213,7 +211,7 @@ function GameBoard({ game, onExit }: { game: Game; onExit: () => void }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.07, ease }}
                   className={cn(
-                    "glass-surface flex w-full items-center gap-4 rounded-2xl px-5 py-4 text-left transition-colors duration-300 disabled:opacity-100",
+                    "glass-surface flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left transition-colors duration-300 disabled:opacity-100 sm:px-5",
                     reveal && isCorrect && "border-success/50 bg-success/10",
                     reveal && isChosen && !isCorrect && "border-destructive/50 bg-destructive/10",
                   )}
@@ -232,7 +230,7 @@ function GameBoard({ game, onExit }: { game: Game; onExit: () => void }) {
                     {reveal && isCorrect ? <Check className="size-3.5" /> : null}
                     {reveal && isChosen && !isCorrect ? <X className="size-3.5" /> : null}
                   </span>
-                  <span className="min-w-0 text-sm sm:text-base">{option}</span>
+                  <span className="min-w-0 text-xs sm:text-base">{option}</span>
                 </motion.button>
               );
             })}
@@ -246,7 +244,7 @@ function GameBoard({ game, onExit }: { game: Game; onExit: () => void }) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.45, ease }}
                 aria-live="polite"
-                className="mt-6 rounded-2xl border border-border bg-white/5 p-5"
+                className="mt-4 rounded-2xl border border-border bg-white/5 p-4"
               >
                 <p
                   className={cn(
@@ -263,7 +261,7 @@ function GameBoard({ game, onExit }: { game: Game; onExit: () => void }) {
             ) : null}
           </AnimatePresence>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-3">
             <GlassButton disabled={chosen === null} onClick={next}>
               {index + 1 >= total ? "Ver resultado" : "Continuar"}
             </GlassButton>

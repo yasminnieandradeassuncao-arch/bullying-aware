@@ -80,7 +80,7 @@ function ChatIA() {
     <>
       <AnimatedBackground />
       <Navbar />
-      <main className="flex min-h-dvh flex-col px-4 pb-6 pt-28 sm:px-6">
+      <main className="flex h-dvh flex-col overflow-hidden px-4 pb-6 pt-28 sm:px-6">
         <PageTransition className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
           <h1 className="flex items-center gap-2 text-lg font-semibold">
             <Sparkles aria-hidden="true" className="size-5 text-primary" />
