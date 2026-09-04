@@ -4,10 +4,13 @@ import {
   Accessibility,
   AlertTriangle,
   Ban,
+  Bot,
   Brain,
   CheckCircle2,
+  Gamepad2,
   Globe,
   Hand,
+
   Heart,
   MessageSquare,
   ShieldCheck,
@@ -161,43 +164,55 @@ function Home() {
       <main>
         <PageTransition>
           {/* Hero */}
-          <section className="relative flex min-h-dvh items-center px-4 pb-20 pt-32 sm:px-6">
-            <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-                  Realidade não Editada
-                </p>
-                <h1 className="mt-5 text-4xl font-semibold text-balance text-gradient sm:text-6xl lg:text-7xl">
-                  Bullying não é brincadeira.
-                </h1>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                  Cada palavra tem peso e cada silêncio tem consequência. Aqui você aprende a
-                  identificar, prevenir, agir e transformar a convivência na sua escola — sem
-                  filtros e sem edição.
-                </p>
-                <div className="mt-10 flex flex-wrap gap-3">
-                  <GlassButton asChild size="lg">
-                    <Link to="/ia">Conversar com IA</Link>
-                  </GlassButton>
-                  <GlassButton asChild size="lg" variant="glass">
-                    <Link to="/minigames">Minigames</Link>
-                  </GlassButton>
-                </div>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.92, filter: "blur(18px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                transition={{ duration: 1.1, ease }}
-                className="relative aspect-square w-full"
-                aria-hidden="true"
+          <section className="relative flex min-h-dvh items-center justify-center px-4 pb-20 pt-32 text-center sm:px-6">
+            <div className="mx-auto flex w-full max-w-3xl flex-col items-center">
+              <motion.p
+                initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, ease }}
+                className="glass-surface rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
               >
-                <div className="absolute inset-0 rounded-[40%] bg-primary/30 blur-3xl" />
-                <div className="absolute inset-8 rounded-[45%] bg-accent/25 blur-2xl" />
-                <div className="glass-surface absolute inset-10 rounded-[42%]" />
+                Realidade não editada
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20, filter: "blur(12px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.9, delay: 0.08, ease }}
+                className="mt-8 text-5xl font-semibold leading-[1.05] text-balance text-gradient sm:text-6xl lg:text-7xl"
+              >
+                Bullying não é brincadeira.
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.9, delay: 0.16, ease }}
+                className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              >
+                Cada palavra deixa marca. Aqui você aprende a enxergar, interromper e transformar
+                situações de violência dentro da escola.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.9, delay: 0.24, ease }}
+                className="mt-10 flex flex-wrap items-center justify-center gap-3"
+              >
+                <GlassButton asChild>
+                  <Link to="/ia">
+                    <Bot aria-hidden="true" />
+                    Conversar com IA
+                  </Link>
+                </GlassButton>
+                <GlassButton asChild variant="glass">
+                  <Link to="/minigames">
+                    <Gamepad2 aria-hidden="true" />
+                    Minigames
+                  </Link>
+                </GlassButton>
               </motion.div>
             </div>
           </section>
+
 
           {/* Sobre */}
           <section id="sobre" className="scroll-mt-28 px-4 py-24 sm:px-6">
