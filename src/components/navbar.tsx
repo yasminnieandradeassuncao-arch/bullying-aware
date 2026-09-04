@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { Menu, X, ShieldCheck, RotateCcw } from "lucide-react";
 import { GlassButton } from "@/components/glass-button";
 import { cn } from "@/lib/utils";
 
