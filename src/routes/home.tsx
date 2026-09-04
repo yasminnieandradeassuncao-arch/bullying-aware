@@ -4,10 +4,13 @@ import {
   Accessibility,
   AlertTriangle,
   Ban,
+  Bot,
   Brain,
   CheckCircle2,
+  Gamepad2,
   Globe,
   Hand,
+
   Heart,
   MessageSquare,
   ShieldCheck,
