@@ -43,6 +43,13 @@ body {
   letter-spacing: -0.011em;
 }
 
+/* Trava o scroll vertical nas telas que não são a landing page
+   (wizard, chat e minigames ocupam exatamente a viewport). */
+body.locked {
+  overflow: hidden;
+  height: 100vh;
+}
+
 h1,
 h2,
 h3 {
