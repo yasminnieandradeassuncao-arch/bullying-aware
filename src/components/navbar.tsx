@@ -44,7 +44,7 @@ export function Navbar() {
           <span className="truncate">Imersão Bullying</span>
         </Link>
 
-        <ul className="ml-auto hidden items-center gap-1 lg:flex">
+        <ul className="mx-auto hidden items-center gap-1 lg:flex">
           {items.map((item) => (
             <li key={item.label}>
               <Link
@@ -60,6 +60,12 @@ export function Navbar() {
         </ul>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
+          <GlassButton asChild size="sm" variant="glass" className="hidden sm:inline-flex">
+            <Link to="/">
+              <RotateCcw aria-hidden="true" />
+              Recomeçar
+            </Link>
+          </GlassButton>
           <GlassButton asChild size="sm" className="hidden sm:inline-flex">
             <Link to="/ia">Começar Agora</Link>
           </GlassButton>
@@ -74,6 +80,7 @@ export function Navbar() {
             {open ? <X /> : <Menu />}
           </GlassButton>
         </div>
+
       </nav>
 
       <AnimatePresence>
