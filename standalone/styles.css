@@ -704,6 +704,54 @@ a {
   margin-top: 36px;
 }
 
+.hero-actions.center {
+  justify-content: center;
+}
+
+.hero.centered {
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-center {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero.centered h1 {
+  margin-top: 32px;
+}
+
+.hero.centered .lead {
+  margin-top: 24px;
+  max-width: 34em;
+}
+
+.badge-pill {
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-restart svg {
+  margin-right: 2px;
+}
+
+@media (max-width: 639px) {
+  .nav-restart,
+  .nav-start {
+    display: none;
+  }
+}
+
 .hero-art {
   position: relative;
   aspect-ratio: 1;

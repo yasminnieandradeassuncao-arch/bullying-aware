@@ -31,6 +31,9 @@
     instagram: "M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4ZM12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM17.5 6.5h.01",
     youtube: "M2 12c0-2.6.2-4 .6-4.8.4-.8 1.2-1.2 2.3-1.3C7 5.7 9.4 5.6 12 5.6s5 .1 7.1.3c1.1.1 1.9.5 2.3 1.3.4.8.6 2.2.6 4.8s-.2 4-.6 4.8c-.4.8-1.2 1.2-2.3 1.3-2.1.2-4.5.3-7.1.3s-5-.1-7.1-.3c-1.1-.1-1.9-.5-2.3-1.3C2.2 16 2 14.6 2 12ZM10 9.5l5 2.5-5 2.5v-5Z",
     x_social: "M4 4l16 16M20 4 4 20",
+    bot: "M9 11h.01M15 11h.01M12 3v3M7 7h10a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-5a3 3 0 0 1 3-3ZM9 21h6",
+    gamepad: "M6 12h4M8 10v4M15 11h.01M17.5 13h.01M7 7h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 7Z",
+    rotate: "M3 12a9 9 0 1 0 3-6.7M3 4v5h5",
   };
 
   function Icon({ name, size = 18, className }) {
@@ -206,7 +209,13 @@
         h(
           "div",
           { className: "nav-actions" },
-          h(Button, { onClick: () => go("/minigames") }, "Começar Agora"),
+          h(
+            Button,
+            { className: "glass-btn nav-restart", onClick: () => go("/") },
+            h(Icon, { name: "rotate", size: 16 }),
+            "Recomeçar",
+          ),
+          h(Button, { className: "nav-start", onClick: () => go("/minigames") }, "Começar Agora"),
           h(
             Button,
             {
@@ -523,32 +532,33 @@
         { className: "page" },
         h(
           "section",
-          { className: "hero", id: "inicio" },
+          { className: "hero centered", id: "inicio" },
           h(
             "div",
-            { className: "hero-grid" },
+            { className: "hero-center fade-in" },
+            h("p", { className: "badge-pill glass" }, "Realidade não editada"),
+            h("h1", { className: "text-gradient" }, "Bullying não é brincadeira."),
+            h(
+              "p",
+              { className: "lead" },
+              "Cada palavra deixa marca. Aqui você aprende a enxergar, interromper e transformar situações de violência dentro da escola.",
+            ),
             h(
               "div",
-              { className: "fade-in" },
-              h("p", { className: "eyebrow" }, "Realidade não Editada"),
-              h("h1", { className: "text-gradient" }, "Bullying não é brincadeira."),
+              { className: "hero-actions center" },
               h(
-                "p",
-                { className: "lead" },
-                "Cada palavra tem peso e cada silêncio tem consequência. Aqui você aprende a identificar, prevenir, agir e transformar a convivência na sua escola — sem filtros e sem edição.",
+                Button,
+                { className: "lg", onClick: () => go("/ia") },
+                h(Icon, { name: "bot", size: 18 }),
+                "Conversar com IA",
               ),
               h(
-                "div",
-                { className: "hero-actions" },
-                h(Button, { className: "lg", onClick: () => go("/ia") }, "Conversar com IA"),
-                h(
-                  Button,
-                  { className: "lg glass-btn", onClick: () => go("/minigames") },
-                  "Minigames",
-                ),
+                Button,
+                { className: "lg glass-btn", onClick: () => go("/minigames") },
+                h(Icon, { name: "gamepad", size: 18 }),
+                "Minigames",
               ),
             ),
-            h("div", { className: "hero-art", "aria-hidden": "true" }, h("i"), h("i"), h("i")),
           ),
         ),
 
